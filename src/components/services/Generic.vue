@@ -5,7 +5,7 @@
       :style="`background-color:${item.background};`"
       :class="item.class"
     >
-      <a :href="item.url" :target="item.target" rel="noreferrer">
+      <a :href="item.url" :target="item.target || '_self'" rel="noreferrer">
         <div class="card-content">
           <div :class="mediaClass">
             <slot name="icon">
@@ -31,7 +31,14 @@
             <slot name="indicator" class="indicator"></slot>
           </div>
           <div class="tag" :class="item.tagstyle" v-if="item.tag">
-            <strong class="tag-text">#{{ item.tag }}</strong>
+            <strong v-if="!Array.isArray(item.tag)" class="tag-text">
+              #{{ item.tag }}
+            </strong>
+            <template v-else>
+              <strong v-for="tag in item.tag" :key="tag" class="tag-text">
+                #{{ tag }}
+              </strong>
+            </template>
           </div>
         </div>
       </a>
