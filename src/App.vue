@@ -138,7 +138,7 @@ import SettingToggle from "./components/SettingToggle.vue";
 import DarkMode from "./components/DarkMode.vue";
 import DynamicTheme from "./components/DynamicTheme.vue";
 
-import defaultConfig from "./assets/config.yml";
+import defaultConfig from "./assets/defaults.yml";
 
 export default {
   name: "App",
